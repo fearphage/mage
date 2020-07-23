@@ -1,4 +1,4 @@
-FROM openjdk:8
+FROM openjdk:11
 
 ENV DEBIAN_FRONTEND noninteractive
 ENV MAVEN_OPTS '-Xmx2g'
@@ -7,8 +7,8 @@ COPY . .
 
 RUN apt-get update \
   && apt-get install -y \
-    maven \
-    openjfx \
+  maven \
+  openjfx \
   && mvn clean install --define skipTests=true
 
 ENTRYPOINT ["mvn"]
